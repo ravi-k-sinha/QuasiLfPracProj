@@ -15,11 +15,11 @@ namespace Message.Repository
             var client = new MongoClient(localMongoUrl);
             if (client != null)
             {
-                _db = client.GetDatabase("Message1Db");
+                _db = client.GetDatabase("MessagesDb");
             }
         }
 
-        public IMongoCollection<MessageDetail> Items
+        public IMongoCollection<MessageDetail> Messages
         {
             get
             {
