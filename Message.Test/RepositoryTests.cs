@@ -7,6 +7,14 @@ namespace Message.Test
 {
     public class RepositoryTests
     {
+
+        MessageMongoRepository repository;
+
+        public RepositoryTests()
+        {
+            repository = new MessageMongoRepository();
+        }
+
         [Fact]
         public void TestAddMessage()
         {
@@ -23,9 +31,16 @@ namespace Message.Test
                 Status = "DRAFT"
             };
 
-            var repository = new MessageMongoRepository();
             var result = repository.Add(message);
 
+            result.Wait();
+            Assert.True(result.Result);
+        }
+
+        [Fact]
+        public void TestDeleteMessage()
+        {
+            var result = repository.Delete("1");
             result.Wait();
             Assert.True(result.Result);
         }
