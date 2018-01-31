@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp1.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Message.Abstractions\Message.Abstractions.csproj" />
+    <ProjectReference Include="..\Message.Repository\Message.Repository.csproj" />
+  </ItemGroup>
+
 </Project>

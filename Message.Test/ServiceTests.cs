@@ -1,11 +1,13 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using Message.Repository;
+using Message.Service;
 using Xunit;
 
 namespace Message.Test
 {
-    public class RepositoryTests
+    public class ServiceTests
     {
         [Fact]
         public void TestAddMessage()
@@ -14,6 +16,7 @@ namespace Message.Test
             {
                 MessageId = "1",
                 Subject = "First Message",
+                Body = "Body for First Message",
                 TenantId = "FirstTenant",
                 SentBy = "user1",
                 SentTo = new List<string> { "user2", "user3" },
@@ -24,7 +27,9 @@ namespace Message.Test
             };
 
             var repository = new MessageMongoRepository();
-            var result = repository.Add(message);
+            var service = new MessageService(repository);
+
+            var result = service.Add(message);
 
             result.Wait();
             Assert.True(result.Result);

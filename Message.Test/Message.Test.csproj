@@ -16,6 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Message.Abstractions\Message.Abstractions.csproj" />
     <ProjectReference Include="..\Message.Repository\Message.Repository.csproj" />
+    <ProjectReference Include="..\Message.Service\Message.Service.csproj" />
   </ItemGroup>
 
 </Project>
