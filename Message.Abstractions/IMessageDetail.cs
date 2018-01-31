@@ -7,7 +7,7 @@ namespace Message
     {
         string MessageId { get; set; }
 
-        string tenantId { get; set; }
+        string TenantId { get; set; }
 
         string Subject { get; set; }
         string Body { get; set; }

@@ -10,7 +10,7 @@ namespace Message
         [BsonId]
         public string MessageId { get; set; }
 
-        public string tenantId { get; set; }
+        public string TenantId { get; set; }
         public string Subject { get; set; }
         public string Body { get; set; }
         public DateTime CreatedOn { get; set; }
