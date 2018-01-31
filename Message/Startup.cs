@@ -33,6 +33,17 @@ namespace Message
             services.AddMvc();
             services.AddTransient<IMessageService, MessageService>();
             services.AddTransient<IMessageRepository, MessageMongoRepository>();
+
+            services.AddSwaggerGen(
+                c =>
+                {
+                    c.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info {
+                        Title = "Message API",
+                        Version = "v1"
+                    });
+                }
+
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,7 +57,13 @@ namespace Message
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Message API v1");
+            });
             app.UseMvc();
+            
         }
     }
 }
