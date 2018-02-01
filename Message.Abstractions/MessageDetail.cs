@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using LendFoundry.Foundation.Persistence;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace Message
 {
-    public class MessageDetail : IMessageDetail
+    public class MessageDetail : Aggregate, IMessageDetail
     {
-        [BsonId]
         public string MessageId { get; set; }
 
-        public string TenantId { get; set; }
         public string Subject { get; set; }
         public string Body { get; set; }
         public DateTime CreatedOn { get; set; }

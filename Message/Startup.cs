@@ -1,14 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using LendFoundry.Foundation.Date;
+using LendFoundry.Foundation.Logging;
+using LendFoundry.Foundation.Persistence.Mongo;
+using LendFoundry.Foundation.Services;
+using LendFoundry.Security.Tokens;
+using LendFoundry.Tenant.Client;
+using Message.Api;
 using Message.Repository;
 using Message.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 
 namespace Message
 {
@@ -30,8 +33,18 @@ namespace Message
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddMvc();
+            services.AddTenantTime();
+            services.AddTokenHandler();
+            services.AddHttpServiceLogging(Settings.ServiceName);
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddTenantService(Settings.Tenant.Host, Settings.Tenant.Port);
+
+            services.AddMvc().AddLendFoundryJsonOptions();
+
             services.AddTransient<IMessageService, MessageService>();
+
+            services.AddSingleton<IMongoConfiguration>(
+                p => new MongoConfiguration(Settings.MongoConnectionString, Settings.MongoDatabase));
             services.AddTransient<IMessageRepository, MessageMongoRepository>();
 
             services.AddSwaggerGen(
@@ -47,21 +60,24 @@ namespace Message
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
-
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Message API v1");
             });
+
+
+            app.UseCors(env);
+            app.UseErrorHandling();
+            
+            // PLEASE DO NOT USE THE CODE BELOW TILL WE FINISH THE DC/OS DEPLOY
+            //if (!env.IsDevelopment())
+            //    app.UseSecurityControl();
+            app.UseRequestLogging();
+            app.UseHealthCheck();
+
             app.UseMvc();
             
         }

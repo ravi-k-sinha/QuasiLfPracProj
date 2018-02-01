@@ -16,12 +16,15 @@ namespace Message.Service
 
         public async Task<bool> Add(MessageDetail message)
         {
-            return await Repository.Add(message);
+            await Task.Run(() => Repository.Add(message));
+            return true;
         }
 
         public async Task<bool> Delete(string messageId)
         {
-            return await Repository.Delete(messageId);
+            var message = await Get(messageId);
+            await Task.Run(() => Repository.Remove(message));
+            return true;
         }
 
         public async Task<IMessageDetail> Get(string messageId)
@@ -31,7 +34,7 @@ namespace Message.Service
 
         public async Task<IEnumerable<IMessageDetail>> GetAll()
         {
-            return await Repository.GetAll();
+            return await Repository.All(x => x.MessageId != null);
         }
 
         public async Task<bool> MarkSent(string messageId)
@@ -41,7 +44,8 @@ namespace Message.Service
 
         public async Task<bool> Update(string messageId, MessageDetail updatedMessage)
         {
-            return await Repository.Update(messageId, updatedMessage);
+            await Task.Run(() => Repository.Update(updatedMessage));
+            return true;
         }
     }
 }

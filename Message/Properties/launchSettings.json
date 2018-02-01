@@ -13,17 +13,41 @@
       "launchBrowser": true,
       "launchUrl": "api/values",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "RS_MESSAGE_CONFIGURATION_HOST": "10.10.1.201",
+        "RS_MESSAGE_TENANT_PORT": "7003",
+        "RS_MESSAGE_CONFIGURATION_PORT": "7001",
+        "RS_MESSAGE_MONGO_DATABASE": "rs-message-db",
+        "RS_MESSAGE_TENANT_HOST": "10.10.1.201",
+        "RS_MESSAGE_MONGO_CONNECTION": "mongodb://multi:ezirSZcslv@10.10.1.201:6000"
+      }
+    },
+    "kestrel": {
+      "commandName": "kestrel",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "RS_MESSAGE_CONFIGURATION_HOST": "10.10.1.201",
+        "RS_MESSAGE_TENANT_PORT": "7003",
+        "RS_MESSAGE_CONFIGURATION_PORT": "7001",
+        "RS_MESSAGE_MONGO_DATABASE": "rs-message-db",
+        "RS_MESSAGE_TENANT_HOST": "10.10.1.201",
+        "RS_MESSAGE_MONGO_CONNECTION": "mongodb://multi:ezirSZcslv@10.10.1.201:6000"
       }
     },
     "Message": {
+      "applicationUrl": "http://localhost:62284/",
       "commandName": "Project",
-      "launchBrowser": true,
-      "launchUrl": "api/values",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "RS_MESSAGE_CONFIGURATION_HOST": "10.10.1.201",
+        "RS_MESSAGE_TENANT_PORT": "7003",
+        "RS_MESSAGE_CONFIGURATION_PORT": "7001",
+        "RS_MESSAGE_MONGO_DATABASE": "rs-message-db",
+        "RS_MESSAGE_TENANT_HOST": "10.10.1.201",
+        "RS_MESSAGE_MONGO_CONNECTION": "mongodb://multi:ezirSZcslv@10.10.1.201:6000"
       },
-      "applicationUrl": "http://localhost:62284/"
+      "launchBrowser": true,
+      "launchUrl": "api/values"
     }
   }
 }
