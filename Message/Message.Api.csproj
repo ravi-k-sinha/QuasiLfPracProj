@@ -10,6 +10,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="LendFoundry.Foundation.Date" Version="2.0.0-dev-11002" />
+    <PackageReference Include="LendFoundry.Foundation.Logging" Version="2.0.0-dev-11001" />
+    <PackageReference Include="LendFoundry.Foundation.Services" Version="2.0.0-dev-11003" />
+    <PackageReference Include="LendFoundry.Security.Tokens" Version="2.0.0-dev-11001" />
+    <PackageReference Include="LendFoundry.Tenant.Client" Version="2.0.0-dev-11002" />
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.5" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.6" />
