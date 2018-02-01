@@ -36,5 +36,12 @@ namespace Message.Api.Controllers
         {
             return Ok(await Service.GetAll());
         }
+
+        [HttpPost()]
+        [Consumes("application/json")]
+        public async Task<IActionResult> AddMessage([FromBody] MessageDetail message)
+        {
+            return Ok(await Service.Add(message));
+        }
     }
 }
