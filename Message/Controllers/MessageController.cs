@@ -64,5 +64,19 @@ namespace Message.Api.Controllers
         {
             return Ok(await Service.DummyUsers());
         }
+
+        //[HttpGet("get-conf")]
+        //[Produces("application/json", Type = typeof(List<string>))]
+        //public async Task<IActionResult> GetConfiguration()
+        //{
+        //    return Ok(await Service.GetConfiguration());
+        //}
+
+        [HttpGet("conf")]
+        [Produces("application/json", Type = typeof(List<string>))]
+        public async Task<IActionResult> GetConfiguration()
+        {
+            return Ok(await Service.GetConfiguration());
+        }
     }
 }

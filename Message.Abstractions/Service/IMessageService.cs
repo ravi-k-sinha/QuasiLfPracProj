@@ -14,5 +14,6 @@ namespace Message
         Task<bool> MarkSent(string messageId);
         Task<bool> Update(string messageId, MessageDetail updatedMessage);
         Task<List<string>> DummyUsers();
+        Task<List<string>> GetConfiguration();
     }
 }

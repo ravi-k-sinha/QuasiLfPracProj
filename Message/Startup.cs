@@ -5,6 +5,7 @@ using LendFoundry.Foundation.Services;
 using LendFoundry.Security.Tokens;
 using LendFoundry.Tenant.Client;
 using LendFoundry.Security.Identity.Client;
+using LendFoundry.Configuration.Client;
 using Message.Api;
 using Message.Repository;
 using Message.Service;
@@ -49,6 +50,10 @@ namespace Message
             services.AddSingleton<IMongoConfiguration>(
                 p => new MongoConfiguration(Settings.MongoConnectionString, Settings.MongoDatabase));
             services.AddTransient<IMessageRepository, MessageMongoRepository>();
+
+            services.AddTransient<IMessageConfiguration>(x => x.GetService<IConfigurationService<MessageConfiguration>>().Get());
+            services.AddConfigurationService<MessageConfiguration>(
+                Settings.Configuration.Host, Settings.Configuration.Port, Settings.ServiceName);
 
             services.AddSwaggerGen(
                 c =>

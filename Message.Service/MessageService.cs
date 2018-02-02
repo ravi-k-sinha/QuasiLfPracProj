@@ -12,11 +12,13 @@ namespace Message.Service
         IMessageRepository Repository;
 
         private IIdentityService IdentityService { get; }
+        private IMessageConfiguration Configuration { get; }
 
-        public MessageService(IMessageRepository repository, IIdentityService identityService)
+        public MessageService(IMessageRepository repository, IIdentityService identityService, IMessageConfiguration configuration)
         {
             this.Repository = repository;
             this.IdentityService = identityService;
+            this.Configuration = configuration;
         }
 
         public async Task<bool> Add(MessageDetail message)
@@ -37,6 +39,11 @@ namespace Message.Service
             var users = await IdentityService.GetRoleMembers("UBSPortal");
 
             return users.Select(x => x.Name).ToList();
+        }
+
+        public Task<List<string>> GetConfiguration()
+        {
+            return Task.Run(() => Configuration.AllowedRoles.ToList());            
         }
 
         public async Task<IMessageDetail> Get(string messageId)
