@@ -13,5 +13,6 @@ namespace Message
         Task<bool> Delete(string messageId);
         Task<bool> MarkSent(string messageId);
         Task<bool> Update(string messageId, MessageDetail updatedMessage);
+        Task<List<string>> DummyUsers();
     }
 }

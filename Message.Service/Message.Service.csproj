@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="LendFoundry.Security.Identity.Abstractions" Version="2.0.0-dev-11002" />
+    <PackageReference Include="LendFoundry.Security.Identity.Client" Version="2.0.0-dev-11001" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Message.Abstractions\Message.Abstractions.csproj" />
     <ProjectReference Include="..\Message.Repository\Message.Repository.csproj" />
   </ItemGroup>

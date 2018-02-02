@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,6 +14,8 @@
     <PackageReference Include="LendFoundry.Foundation.Date" Version="2.0.0-dev-11002" />
     <PackageReference Include="LendFoundry.Foundation.Logging" Version="2.0.0-dev-11001" />
     <PackageReference Include="LendFoundry.Foundation.Services" Version="2.0.0-dev-11003" />
+    <PackageReference Include="LendFoundry.Security.Identity.Abstractions" Version="2.0.0-dev-11002" />
+    <PackageReference Include="LendFoundry.Security.Identity.Client" Version="2.0.0-dev-11001" />
     <PackageReference Include="LendFoundry.Security.Tokens" Version="2.0.0-dev-11001" />
     <PackageReference Include="LendFoundry.Tenant.Client" Version="2.0.0-dev-11002" />
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
@@ -29,5 +32,21 @@
   <ItemGroup>
     <ProjectReference Include="..\Message.Service\Message.Service.csproj" />
   </ItemGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptModuleKind />
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
 
 </Project>

@@ -57,5 +57,12 @@ namespace Message.Api.Controllers
         {
             return Ok("{ \"result\" : " + (await Service.Add(message)).ToString().ToLower() + '}');
         }
+
+        [HttpGet("dummy")]
+        [Produces("application/json", Type = typeof(List<string>))]
+        public async Task<IActionResult> DummyUsers()
+        {
+            return Ok(await Service.DummyUsers());
+        }
     }
 }

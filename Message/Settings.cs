@@ -13,6 +13,9 @@ namespace Message.Api
         public static ServiceSettings EventHub { get; } = 
             new ServiceSettings($"{Prefix}_EVENTHUB_HOST", "eventhub", $"{Prefix}_EVENTHUB_PORT");
 
+        public static ServiceSettings Identity { get; } =
+            new ServiceSettings($"{Prefix}_IDENTITY_HOST", "identity", $"{Prefix}_IDENTITY_PORT");
+
         // Not used currently (Copied over from sample project)
         public static ServiceSettings Configuration { get; } = 
             new ServiceSettings($"{Prefix}_CONFIGURATION_HOST", "configuration", $"{Prefix}_CONFIGURATION_PORT");

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using LendFoundry.Security.Identity.Client;
+using System.Linq;
 
 namespace Message.Service
 {
@@ -9,9 +11,12 @@ namespace Message.Service
 
         IMessageRepository Repository;
 
-        public MessageService(IMessageRepository repository)
+        private IIdentityService IdentityService { get; }
+
+        public MessageService(IMessageRepository repository, IIdentityService identityService)
         {
             this.Repository = repository;
+            this.IdentityService = identityService;
         }
 
         public async Task<bool> Add(MessageDetail message)
@@ -25,6 +30,13 @@ namespace Message.Service
             var message = await Get(messageId);
             await Task.Run(() => Repository.Remove(message));
             return true;
+        }
+
+        public async Task<List<string>> DummyUsers()
+        {
+            var users = await IdentityService.GetRoleMembers("UBSPortal");
+
+            return users.Select(x => x.Name).ToList();
         }
 
         public async Task<IMessageDetail> Get(string messageId)

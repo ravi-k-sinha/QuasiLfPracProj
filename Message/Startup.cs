@@ -4,6 +4,7 @@ using LendFoundry.Foundation.Persistence.Mongo;
 using LendFoundry.Foundation.Services;
 using LendFoundry.Security.Tokens;
 using LendFoundry.Tenant.Client;
+using LendFoundry.Security.Identity.Client;
 using Message.Api;
 using Message.Repository;
 using Message.Service;
@@ -38,6 +39,8 @@ namespace Message
             services.AddHttpServiceLogging(Settings.ServiceName);
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTenantService(Settings.Tenant.Host, Settings.Tenant.Port);
+
+            services.AddIdentityService(Settings.Identity.Host, Settings.Identity.Port);
 
             services.AddMvc().AddLendFoundryJsonOptions();
 
