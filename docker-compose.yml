@@ -1,0 +1,16 @@
+messages:
+  image: unibizsys/ubsr4:rkstrainingsvc
+  ports:
+    - 10001:5000
+  
+  environment:
+    ASPNETCORE_ENVIRONMENT: Development
+    LOG_FORMAT: plain
+    RS_MESSAGE_CONFIGURATION_HOST: 10.10.1.201
+    RS_MESSAGE_TENANT_PORT: 7003
+    RS_MESSAGE_CONFIGURATION_PORT: 7001
+    RS_MESSAGE_MONGO_DATABASE: rs-messages-db
+    RS_MESSAGE_TENANT_HOST: 10.10.1.201
+    RS_MESSAGE_MONGO_CONNECTION: mongodb://multi:ezirSZcslv@10.10.1.201:6000
+    RS_MESSAGE_IDENTITY_HOST: 10.10.1.201
+    RS_MESSAGE_IDENTITY_PORT: 7018

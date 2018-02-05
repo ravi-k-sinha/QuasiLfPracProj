@@ -39,7 +39,6 @@
       }
     },
     "Message": {
-      "applicationUrl": "http://localhost:62284/",
       "commandName": "Project",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
@@ -51,9 +50,7 @@
         "RS_MESSAGE_MONGO_CONNECTION": "mongodb://multi:ezirSZcslv@10.10.1.201:6000",
         "RS_MESSAGE_IDENTITY_HOST": "10.10.1.201",
         "RS_MESSAGE_IDENTITY_PORT": "7018"
-      },
-      "launchBrowser": true,
-      "launchUrl": "api/values"
+      }
     }
   }
 }

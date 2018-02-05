@@ -1,6 +1,6 @@
 ﻿FROM microsoft/dotnet:1.1.2-runtime
 
-ADD ./bin/Release/PublishOutput /out
+ADD ./Message/out /out
 WORKDIR out
 
 EXPOSE 5000

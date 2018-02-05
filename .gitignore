@@ -3,5 +3,6 @@
 *.swp
 obj/
 bin/
+out/
 Properties/
 *.csproj.user
